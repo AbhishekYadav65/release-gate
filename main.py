@@ -11,7 +11,21 @@ SAFE_INTEGER_MAX = 9007199254740991
 VERSION_RE = re.compile(r"^[1-9][0-9]*$")
 
 current_champion = None
+from fastapi import FastAPI, Request
 
+
+@app.get("/")
+def root():
+    return {"status": "ok"}
+
+@app.get("/test")
+def test():
+    return {"message": "release-gate is running"}
+
+@app.post("/promote")
+async def promote(request: Request):
+    # your existing code
+    ...
 
 def invalid_input():
     return JSONResponse(
